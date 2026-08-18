@@ -1,6 +1,6 @@
 class Solution {
 public:
-    void combination(string digits,map<int,vector<string>> mpp,vector<string> &v,int i,string &k)
+    void combination(string &digits,map<int,vector<string>> &mpp,vector<string> &v,int i,string &k)
     {
         if(i==digits.size())
         {
@@ -10,10 +10,9 @@ public:
         char c=digits[i];
         for(int m=0;m<mpp[c-'0'].size();m++)
         {
-            string a=k;
-            k+=mpp[c-'0'][m];
+            k+=(mpp[c-'0'][m]);
             combination(digits,mpp,v,i+1,k);
-            k=a;
+            k.pop_back();
         }
     }
     vector<string> letterCombinations(string digits) {
